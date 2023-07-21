@@ -1,14 +1,15 @@
-const express = require('express');
-const dotenv = require('dotenv');
+const express = require("express");
+const dotenv = require("dotenv");
 
-dotenv.config({ path: './config/config.env' });
+//import route file
+const bootcamps = require('./routes/bootcamps')
+dotenv.config({ path: "./config/config.env" });
 
 const app = express();
 
+//mount route
+app.use('/api/v1/bootcamps',bootcamps);
 
-app.get('/',(req,res)=>{
-  res.status(200).json({msg:"This msg recive from Server", status:200})
-});
 
 const PORT = process.env.PORT || 5000;
 app.listen(
